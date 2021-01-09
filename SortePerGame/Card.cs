@@ -62,7 +62,7 @@
         public override string ToString()
         {
             return
-                cardSuit + " :" +cardValue;
+                cardValue + " of " + cardSuit;
         }
 
 

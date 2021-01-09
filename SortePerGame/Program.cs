@@ -48,9 +48,10 @@ namespace SortePerGame
                             Console.WriteLine("player 0's turn is over");
                             Thread.Sleep(1000);
                         }
-                        if (player[0].Hand.Count == 1 && player[0].Hand.First().CardValue == Card.Value.Jack && player[0].Hand.First().CardSuit == Card.Suit.Spades)
+                        if (player[0].Hand.Count == 1 && player[0].Hand.First().CardValue == Card.Value.Jack && player[0].Hand.First().CardSuit == Card.Suit.Clubs)
                         {
                             Console.WriteLine("gameover player0 lost");
+                            Thread.Sleep(5000);
                             gameOver = true;
                         }
                         
@@ -65,9 +66,10 @@ namespace SortePerGame
                             Console.WriteLine("player 0's turn is over");
                             Thread.Sleep(1000);
                         }
-                        if (player[1].Hand.Count == 1 && player[1].Hand.First().CardValue == Card.Value.Jack && player[1].Hand.First().CardSuit == Card.Suit.Spades)
+                        if (player[1].Hand.Count == 1 && player[1].Hand.First().CardValue == Card.Value.Jack && player[1].Hand.First().CardSuit == Card.Suit.Clubs)
                         {
                             Console.WriteLine("gameover player1 lost");
+                            Thread.Sleep(5000);
                             gameOver = true;
 
                         }

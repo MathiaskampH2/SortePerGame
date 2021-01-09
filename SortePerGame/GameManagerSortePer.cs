@@ -27,10 +27,6 @@ namespace SortePerGame
 
         public void CheckForPair(Player player)
         {
-            if (player.Hand.Count == 0)
-            {
-                return;
-            }
             for (int i = 0; i < player.Hand.Count; i++)
             {
                 foreach (Card card in player.Hand.ToList())
