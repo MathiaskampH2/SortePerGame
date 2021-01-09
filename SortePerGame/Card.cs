@@ -1,38 +1,84 @@
-﻿using System.Dynamic;
-
-namespace SortePerGame
+﻿namespace SortePerGame
 {
     public class Card
     {
-        private Suit suit;
-
-        public Suit Suit
+        public enum Color
         {
-            get { return suit; }
-            set { suit = value; }
+            Red,
+            Black
         }
 
-        private Value value;
-
-        public Value Value
+        public enum Suit
         {
-            get { return value; }
-            set { value = value; }
+            Hearts = 1,
+            Diamonds = 2,
+            Clubs = 3,
+            Spades = 4
+        }
+
+        public enum Value
+        {
+            Two = 1,
+            Three = 2,
+            Four = 3,
+            Five = 4,
+            Six = 5,
+            Seven = 6,
+            Eight = 7,
+            Nine = 8,
+            Ten = 9,
+            Jack = 10,
+            Queen = 11,
+            King = 12,
+            Ace = 13
+        }
+
+        private Suit cardSuit;
+
+        public Suit CardSuit
+        {
+            get { return cardSuit; }
+            set { cardSuit = value; }
+        }
+
+
+        private Value cardValue;
+
+        public Value CardValue
+        {
+            get { return cardValue; }
+            set { cardValue = value; }
+        }
+
+        private Color cardColor;
+
+        public Color CardColor
+        {
+            get { return cardColor; }
+            set { cardColor = value; }
         }
 
 
         public override string ToString()
         {
             return
-                suit + " :" + value;
+                cardSuit + " :" +cardValue;
         }
 
 
-        public Card(int IntSuit, int intValue)
+        public Card(int suit, int value)
         {
-            this.suit = (Suit) IntSuit;
+            this.cardSuit = (Suit) suit;
+            this.cardValue = (Value) value;
 
-            this.value = (Value) intValue;
+            if (cardSuit == Suit.Spades || cardSuit == Suit.Clubs)
+            {
+                this.cardColor = Color.Black;
+            }
+            else
+            {
+                this.cardColor = Color.Red;
+            }
         }
     }
 }

@@ -1,75 +1,46 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Dynamic;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 
 namespace SortePerGame
 {
-    public class DeckCreator
+     class DeckCreator
     {
-        public List<Card> ListOfCards;
-        public List<Card> tempList;
-        private Random random = new Random();
-
-
-        public int rng(int min, int max)
+        private List<Card> cards;
+        public List<Card> Cards
         {
-            return random.Next(min, max);
+            get { return cards; }
+            set { cards = value; }
         }
 
-
-        public List<Card> CreateDeckOfCards()
+        public List<Card> CreateDeckForSortePer()
         {
-            ListOfCards = new List<Card>();
+            Cards = CreateDeck();
+
+            foreach (Card card in Cards.ToList())
+            {
+                if (card.CardSuit == Card.Suit.Spades && card.CardValue == (Card.Value) 10)
+                {
+                    Cards.Remove(card);
+                }
+            }
+            return Cards;
+        }
+
+        // create a deck with 52 card
+        public List<Card> CreateDeck()
+        {
+            Cards = new List<Card>();
 
             for (int i = 1; i <= 4; i++)
             {
                 for (int j = 1; j <= 13; j++)
                 {
-                    ListOfCards.Add(new Card(i, j));
+                    Cards.Add(new Card(i, j));
                 }
             }
-
-            return ListOfCards;
+            return Cards;
         }
-
-
-        public List<Card> ShuffleCards(List<Card> cardList)
-        {
-            for (int i = 0; i < ListOfCards.Count; i++)
-            {
-                Card tempList = cardList[i];
-
-                int index = rng(0, cardList.Count);
-
-                cardList[i] = cardList[index];
-
-                cardList[index] = tempList;
-            }
-
-            return tempList;
-        }
-
-        public List<Card> GetShuffledCards()
-        {
-
-            ListOfCards = CreateDeckOfCards();
-
-            tempList = new List<Card>();
-
-            tempList = ShuffleCards(ListOfCards);
-
-            return tempList;
-        }
-
-
-        //public List<Card> CreateShuffledDeck(List<Card> cardList)
-        //{
-
-        //    ListOfCards = new List<Card>();
-
-        //    ListOfCards = GetShuffledCards(CreateShuffledDeck());
-
-        //}
-
     }
 }
